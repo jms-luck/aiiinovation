@@ -30,16 +30,12 @@
     <!-- Hero Section -->
     <section class="hero-modern">
         <div class="hero-content">
-<<<<<<< HEAD
             <h1 class="animate-text">Virtual Health AI with Azure</h1>
             <p class="animate-text delay-1">Revolutionizing Healthcare with AI Technology</p>
             <div class="hero-buttons">
                 <a href="upload_analysis.html" class="cta-btn animate-text delay-2">Get Started</a>
                 <a href="chatbot.html" class="cta-btn secondary animate-text delay-2">Try AI Chat</a>
-=======
-            <h1>Welcome to Our Virtual Health AI Website</h1>
-            <p>Your journey to a better experience starts here.</p>
-            <a href="#contact" class="cta-btn">Contact Us</a>
+            </div>
         </div>
     </section>
 
@@ -50,7 +46,6 @@
             <p>Interact with our healthcare chatbot for assistance and more.</p>
             <div class="chatbot-frame">
                 <iframe src="https://copilotstudio.microsoft.com/environments/Default-84c31ca0-ac3b-4eae-ad11-519d80233e6f/bots/crb00_healthcareAgent/webchat?__version__=2" frameborder="0" style="width: 100%; height: 500px;"></iframe>
->>>>>>> 8d5a1f48717c63b326f96af0b0a5cda94d009caa
             </div>
         </div>
     </section>
@@ -104,7 +99,7 @@
         </div>
     </section>
 
-    <!-- Objectives Section with new styling -->
+    <!-- Objectives Section -->
     <section class="objectives-modern">
         <h2>Our Mission</h2>
         <div class="objectives-grid">
@@ -127,10 +122,7 @@
     </footer>
 
     <script>
-        // Add animation on scroll
-        const observerOptions = {
-            threshold: 0.1
-        };
+        const observerOptions = { threshold: 0.1 };
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -144,7 +136,6 @@
             observer.observe(el);
         });
 
-        // Check login status and update navbar
         function checkLoginStatus() {
             const isLoggedIn = localStorage.getItem('isLoggedIn');
             const authButton = document.getElementById('authButton');
