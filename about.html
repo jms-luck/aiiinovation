@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Virtual Health AI with Azure</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <header>
+        <nav>
+            <div class="navbar-logo">
+                <img src="img/log.png" alt="Virtual Health AI Logo">
+                <span>Virtual Health AI</span>
+            </div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="chatbot.html">Chatbot</a></li>
+                <li><a href="upload_analysis.html">Upload & Analysis</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li id="authButton"><a href="login.html" class="login-btn">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2>About Virtual Health AI with Azure</h2>
+            <p>Our platform leverages the power of Azure to provide advanced health analytics and insights. Upload your health data and get detailed analysis reports powered by AI.</p>
+        </div>
+    </section>
+
+    <!-- Creators Section -->
+    <section id="creators">
+        <div class="container">
+            <h2>Meet the Creators</h2>
+            <div class="creator">
+                <img src="img/jms.jpg" alt="Photo of Meenachi Sundaresan">
+                <h3>Meenachi Sundaresan</h3>
+            </div>
+            <div class="creator">
+                <img src="img/maha.jpg" alt="Photo of Mahashree">
+                <h3>Mahashree</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Virtual Health AI with Azure. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Check login status and update navbar
+        function checkLoginStatus() {
+            const isLoggedIn = localStorage.getItem('isLoggedIn');
+            const authButton = document.getElementById('authButton');
+
+            if (isLoggedIn === 'true') {
+                authButton.innerHTML = '<a href="#" class="logout-btn" onclick="logout()">Logout</a>';
+            } else {
+                authButton.innerHTML = '<a href="login.html" class="login-btn">Login</a>';
+            }
+        }
+
+        function logout() {
+            localStorage.setItem('isLoggedIn', 'false');
+            checkLoginStatus();
+        }
+
+        document.addEventListener('DOMContentLoaded', checkLoginStatus);
+    </script>
+
+</body>
+</html>
