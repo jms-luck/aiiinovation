@@ -3,25 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Customized Website with Virtual Chatbot</title>
+    <title>Virtual Health AI with Azure</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 
     <!-- Navbar -->
     <header>
         <nav>
+            <div class="navbar-logo">
+                <img src="img/log.png" alt="Virtual Health AI Logo">
+                <span>Virtual Health AI</span>
+            </div>
             <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#chatbot">Chatbot</a></li>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="chatbot.html">Chatbot</a></li>
+                <li><a href="upload_analysis.html">Upload & Analysis</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li id="authButton"><a href="login.html" class="login-btn">Login</a></li>
             </ul>
         </nav>
     </header>
 
     <!-- Hero Section -->
-    <section id="home" class="hero">
+    <section class="hero-modern">
         <div class="hero-content">
+<<<<<<< HEAD
+            <h1 class="animate-text">Virtual Health AI with Azure</h1>
+            <p class="animate-text delay-1">Revolutionizing Healthcare with AI Technology</p>
+            <div class="hero-buttons">
+                <a href="upload_analysis.html" class="cta-btn animate-text delay-2">Get Started</a>
+                <a href="chatbot.html" class="cta-btn secondary animate-text delay-2">Try AI Chat</a>
+=======
             <h1>Welcome to Our Virtual Health AI Website</h1>
             <p>Your journey to a better experience starts here.</p>
             <a href="#contact" class="cta-btn">Contact Us</a>
@@ -35,33 +50,118 @@
             <p>Interact with our healthcare chatbot for assistance and more.</p>
             <div class="chatbot-frame">
                 <iframe src="https://copilotstudio.microsoft.com/environments/Default-84c31ca0-ac3b-4eae-ad11-519d80233e6f/bots/crb00_healthcareAgent/webchat?__version__=2" frameborder="0" style="width: 100%; height: 500px;"></iframe>
+>>>>>>> 8d5a1f48717c63b326f96af0b0a5cda94d009caa
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact">
-        <div class="container">
-            <h2>Contact Us</h2>
-            <form action="#">
-                <label for="name">Name</label>
-                <input type="text" id="name" name="name" required>
+    <!-- Features Section -->
+    <section class="features">
+        <h2>Our Features</h2>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <i class="fas fa-robot"></i>
+                <h3>AI-Powered Analysis</h3>
+                <p>Advanced healthcare insights using Azure AI</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-lock"></i>
+                <h3>Secure & Private</h3>
+                <p>Enterprise-grade security with Azure</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-comments"></i>
+                <h3>24/7 Support</h3>
+                <p>Always available AI chatbot assistance</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-chart-line"></i>
+                <h3>Real-time Analytics</h3>
+                <p>Instant health data visualization</p>
+            </div>
+        </div>
+    </section>
 
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" required>
+    <!-- How It Works Section -->
+    <section class="how-it-works">
+        <h2>How It Works</h2>
+        <div class="steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h3>Upload Data</h3>
+                <p>Share your health data securely</p>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <h3>AI Analysis</h3>
+                <p>Advanced processing with Azure AI</p>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <h3>Get Insights</h3>
+                <p>Receive detailed health analytics</p>
+            </div>
+        </div>
+    </section>
 
-                <label for="message">Message</label>
-                <textarea id="message" name="message" required></textarea>
-
-                <button type="submit">Submit</button>
-            </form>
+    <!-- Objectives Section with new styling -->
+    <section class="objectives-modern">
+        <h2>Our Mission</h2>
+        <div class="objectives-grid">
+            <ul>
+                <li><strong>AI-Driven Care:</strong> VirtualHealthAI at Your Service</li>
+                <li>Integrate VirtualHealthAI with healthcare data and services via Azure Functions and Power Apps.</li>
+                <li>Real-time Analysis - Provide 24/7 real-time healthcare interaction through Azure Health Bot and Azure Logic Apps automation.</li>
+                <li>Order Management - Enhance user experience with intuitive interfaces using Copilot and Power Apps.</li>
+                <li>Privacy - Ensure data security and privacy with Azure’s security frameworks for compliant healthcare solutions.</li>
+                <li>Monitor and optimize performance using Azure Application Insights for continuous feedback and improvements.</li>
+                <li>Scale the solution using Azure Cloud services to handle increasing user interactions and future growth.</li>
+                <li>To empower individuals by providing real-time healthcare assistance and support through AI technology.</li>
+            </ul>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2024 Customized Website. All rights reserved.</p>
+        <p>&copy; 2024 Virtual Health AI with Azure. All rights reserved.</p>
     </footer>
 
+    <script>
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.feature-card, .step, .objectives-grid li').forEach((el) => {
+            observer.observe(el);
+        });
+
+        // Check login status and update navbar
+        function checkLoginStatus() {
+            const isLoggedIn = localStorage.getItem('isLoggedIn');
+            const authButton = document.getElementById('authButton');
+
+            if (isLoggedIn === 'true') {
+                authButton.innerHTML = '<a href="#" class="logout-btn" onclick="logout()">Logout</a>';
+            } else {
+                authButton.innerHTML = '<a href="login.html" class="login-btn">Login</a>';
+            }
+        }
+
+        function logout() {
+            localStorage.setItem('isLoggedIn', 'false');
+            checkLoginStatus();
+        }
+
+        document.addEventListener('DOMContentLoaded', checkLoginStatus);
+    </script>
 </body>
 </html>
