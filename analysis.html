@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload & Analysis - Virtual Health AI with Azure</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <header>
+        <nav>
+            <div class="navbar-logo">
+                <img src="img/log.png" alt="Virtual Health AI Logo">
+                <span>Virtual Health AI</span>
+            </div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="chatbot.html">Chatbot</a></li>
+                <li><a href="upload_analysis.html">Upload & Analysis</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li id="authButton"><a href="login.html" class="login-btn">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Upload Section -->
+    <section id="upload">
+        <div class="container">
+            <h2>Upload Your File</h2>
+            <div class="upload-zone" id="dropZone">
+                <div class="upload-content">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <p>Drag and drop your file here</p>
+                    <p>or</p>
+                    <form id="uploadForm" enctype="multipart/form-data">
+                        <label for="file" class="file-label">Choose file</label>
+                        <input type="file" id="file" name="file" required>
+                        <div id="filePreview" style="display: none;" class="file-preview">
+                            <div class="file-info">
+                                <p><strong>File Name:</strong> <span id="fileName"></span></p>
+                                <p><strong>File Size:</strong> <span id="fileSize"></span></p>
+                                <p><strong>File Type:</strong> <span id="fileType"></span></p>
+                            </div>
+                        </div>
+                        <button type="submit" class="learn-more">
+                            <span class="circle">
+                                <span class="icon arrow"></span>
+                            </span>
+                            <span class="button-text">Upload</span>
+                        </button>
+                    </form>
+                </div>
+                <div class="upload-progress" style="display: none;">
+                    <div class="progress-bar">
+                        <div class="progress" id="uploadProgress"></div>
+                    </div>
+                    <p class="progress-text">Uploading... <span id="progressPercent">0%</span></p>
+                </div>
+            </div>
+            <div id="error-message" style="color: red; display: none;"></div>
+        </div>
+    </section>
+
+    <!-- Loader Section -->
+    <div id="loader" class="loader" style="display: none;"></div>
+
+    <!-- Analysis Section -->
+    <section id="analysis" style="display: none;">
+        <div class="container">
+            <h2>Analysis Report</h2>
+            <iframe title="newwww" width="600" height="373.5" src="https://app.powerbi.com/view?r=eyJrIjoiM2Q0YTg1MjUtYjc0Yy00ZmZlLThmYmEtMzEyZGRlODRlZWQ2IiwidCI6Ijg0YzMxY2EwLWFjM2ItNGVhZS1hZDExLTUxOWQ4MDIzM2U2ZiIsImMiOjZ9&embedImagePlaceholder=true" frameborder="0" allowFullScreen="true"></iframe>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Virtual Health AI with Azure. All rights reserved.</p>
+    </footer>
+
+    <script src="https://kit.fontawesome.com/YOUR_ACTUAL_KIT_CODE.js" crossorigin="anonymous"></script>
+    <script>
+        document.getElementById('uploadForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const fileInput = document.getElementById('file');
+            const file = fileInput.files[0];
+            
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    // Process the file content here
+                    const fileContent = e.target.result;
+                    // Simulate a successful upload response
+                    const data = { success: true };
+                    
+                    if (data.success) {
+                        document.getElementById('loader').style.display = 'block';
+                        document.getElementById('error-message').style.display = 'none';
+                        setTimeout(() => {
+                            document.getElementById('loader').style.display = 'none';
+                            document.getElementById('analysis').style.display = 'block';
+                        }, 10000); // Show loader for 10 seconds
+                    } else {
+                        document.getElementById('error-message').textContent = 'File upload failed. Please try again.';
+                        document.getElementById('error-message').style.display = 'block';
+                    }
+                };
+                reader.onerror = function() {
+                    document.getElementById('error-message').textContent = 'An error occurred while reading the file. Please try again.';
+                    document.getElementById('error-message').style.display = 'block';
+                };
+                reader.readAsText(file);
+            } else {
+                document.getElementById('error-message').textContent = 'No file selected. Please choose a file to upload.';
+                document.getElementById('error-message').style.display = 'block';
+            }
+        });
+
+        // Add login status check
+        function checkLoginStatus() {
+            const isLoggedIn = localStorage.getItem('isLoggedIn');
+            const authButton = document.getElementById('authButton');
+
+            if (isLoggedIn === 'true') {
+                authButton.innerHTML = '<a href="#" class="logout-btn" onclick="logout()">Logout</a>';
+            } else {
+                authButton.innerHTML = '<a href="login.html" class="login-btn">Login</a>';
+            }
+        }
+
+        function logout() {
+            localStorage.setItem('isLoggedIn', 'false');
+            checkLoginStatus();
+        }
+
+        document.addEventListener('DOMContentLoaded', checkLoginStatus);
+    </script>
+
+</body>
+</html>
